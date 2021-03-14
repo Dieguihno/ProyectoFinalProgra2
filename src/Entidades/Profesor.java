@@ -9,7 +9,14 @@ package Entidades;
  *
  * @author diego
  */
-public class Profesor {
+public class Profesor extends Persona {
+
+    public Profesor(String nombre, String apellido, String identificacion, String correo) {
+        super(nombre, apellido, identificacion, correo);
+    }
+
+    
     
     //extends persona
+    
 }

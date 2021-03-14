@@ -15,5 +15,15 @@ public class Curso {
     //profesores (si es lab son 2)
     //costo
     //limite 15 lab, 20 teoria
-    //capacidad actual (segun la matricula)
+    //capacidad actual (segun la matricula) > regla de negocio
+    
+    private Profesor profesor;
+    private String tipoCurso;
+    private double costo;
+    //arraylist
+    
+    //faltaria el condicional si es lab (2 profes) o teoria (1 profe) y el costo diferente
+    
+    
+    
 }
