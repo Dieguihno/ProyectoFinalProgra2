@@ -10,22 +10,41 @@ package Entidades;
  * @author diego
  */
 public class Carrera {
-    
+
     //dos carreras: ing sistemas, ing del software
-    
     //puede ser un boolean
-    
-    private String carrera;
+    private boolean sistemas;
+    private boolean software;
 
-    public String getCarrera() {
-        return carrera;
+    public boolean isSistemas() {
+        return sistemas;
     }
 
-    public void setCarrera(String carrera) {
-        this.carrera = "Ingenieria en sistemas"; //en veremos
-        this.carrera = "Ingenieria del software";
+    public void setSistemas(boolean sistemas) {
+        //this.sistemas = sistemas;
+
+        if (sistemas) {
+            this.sistemas = true;
+            this.software = false;
+        } else {
+
+        }
     }
-    
-    
-    
+
+    public boolean isSoftware() {
+        return software;
+    }
+
+    public void setSoftware(boolean software) {
+        // this.software = software;
+
+        if (software) {
+            this.sistemas = false;
+            this.software = true;
+
+        } else {
+
+        }
+    }
+
 }

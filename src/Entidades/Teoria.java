@@ -9,10 +9,15 @@ package Entidades;
  *
  * @author diego
  */
-public class Curso {
+public class Teoria {
     
-   //combinar los cursos de lab y teoria
-    
-    
+     int cupo = 20; 
+   
+       
+    private String nombreTeoria;
+    private Profesor profesor1;
+    private double costo;
+    private int cuposRestantes;
+    //arraylist
     
 }

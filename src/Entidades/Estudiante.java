@@ -9,11 +9,36 @@ package Entidades;
  *
  * @author diego
  */
-public class Estudiante {
+public class Estudiante extends Persona {
     
-    //extends persona
-    //carrera
-    //promedio ponderado
-    //lista de cursos en orden alfabetico
+   private double promedioPonderado;
+   private Carrera carrera;
+
+    public Estudiante(double promedioPonderado, Carrera carrera, String nombre, String apellido, String identificacion, String correo) {
+        super(nombre, apellido, identificacion, correo);
+        this.promedioPonderado = promedioPonderado;
+        this.carrera = carrera;
+    }
+   
+   
+    public double getPromedioPonderado() {
+        return promedioPonderado;
+    }
+
+    public void setPromedioPonderado(double promedioPonderado) {
+        this.promedioPonderado = promedioPonderado;
+    }
+
+    public Carrera getCarrera() {
+        return carrera;
+    }
+
+    public void setCarrera(Carrera carrera) {
+        this.carrera = carrera;
+    }
+   
+   
+    
+
     
 }
