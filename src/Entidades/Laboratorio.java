@@ -22,7 +22,56 @@ public class Laboratorio {
     private Profesor profesor1;
     private Profesor profesor2;
     private double costo;
-    private int cuposRestantes;
-    //arraylist
+
+    public Laboratorio(String nombreLaboratorio, Profesor profesor1, Profesor profesor2, double costo) {
+        this.nombreLaboratorio = nombreLaboratorio;
+        this.profesor1 = profesor1;
+        this.profesor2 = profesor2;
+        this.costo = costo;
+    }
+    
+    public int getCupo() {
+        return cupo;
+    }
+
+    public void setCupo(int cupo) {
+        this.cupo = cupo;
+    }
+
+    public String getNombreLaboratorio() {
+        return nombreLaboratorio;
+    }
+
+    public void setNombreLaboratorio(String nombreLaboratorio) {
+        this.nombreLaboratorio = nombreLaboratorio;
+    }
+
+    public Profesor getProfesor1() {
+        return profesor1;
+    }
+
+    public void setProfesor1(Profesor profesor1) {
+        this.profesor1 = profesor1;
+    }
+
+    public Profesor getProfesor2() {
+        return profesor2;
+    }
+
+    public void setProfesor2(Profesor profesor2) {
+        this.profesor2 = profesor2;
+    }
+
+    public double getCosto() {
+        return costo;
+    }
+
+    public void setCosto(double costo) {
+        this.costo = costo;
+    }
+    
+    
+    
+    
     
 }

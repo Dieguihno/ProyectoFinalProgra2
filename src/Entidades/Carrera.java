@@ -10,41 +10,40 @@ package Entidades;
  * @author diego
  */
 public class Carrera {
+    
+    /*
+    en esta clase se definen las carreras, solamente hay 2
+    */
 
     //dos carreras: ing sistemas, ing del software
-    //puede ser un boolean
-    private boolean sistemas;
-    private boolean software;
+    //revisar esto
+    
+    private String informatica;
+    private String sistemas;
 
-    public boolean isSistemas() {
+    public Carrera() {
+        this.informatica = " Ingenieria del software ";
+        this.sistemas = " Ingenieria en sistemas ";
+    }
+    
+    
+    public String getInformatica() {
+        return informatica;
+    }
+
+    public void setInformatica(String informatica) {
+        this.informatica = " Ingenieria en informatica ";
+    }
+
+    public String getSistemas() {
         return sistemas;
     }
 
-    public void setSistemas(boolean sistemas) {
-        //this.sistemas = sistemas;
-
-        if (sistemas) {
-            this.sistemas = true;
-            this.software = false;
-        } else {
-
-        }
+    public void setSistemas(String sistemas) {
+        this.sistemas = " Ingenieria en sistemas ";
     }
+    
 
-    public boolean isSoftware() {
-        return software;
-    }
-
-    public void setSoftware(boolean software) {
-        // this.software = software;
-
-        if (software) {
-            this.sistemas = false;
-            this.software = true;
-
-        } else {
-
-        }
-    }
+     
 
 }

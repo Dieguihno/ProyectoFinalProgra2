@@ -10,13 +10,21 @@ package Entidades;
  * @author diego
  */
 public class Profesor extends Persona {
+    
+    private Carrera carrera;
 
-    public Profesor(String nombre, String apellido, String identificacion, String correo) {
+    public Profesor(String nombre, String apellido, String identificacion, String correo, Carrera carrera) {
         super(nombre, apellido, identificacion, correo);
+        this.carrera = carrera;
+    }
+       
+    
+    public Carrera getCarrera() {
+        return carrera;
     }
 
-    
-    
-    //extends persona
+    public void setCarrera(Carrera carrera) {
+        this.carrera = carrera;
+    }
     
 }

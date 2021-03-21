@@ -15,7 +15,7 @@ public class ProyectoFinalProgra2 {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        // TODO code application logic here
+        // este main se debe eliminar, mientras tanto va a ser solo para pruebas
     }
     
 }
