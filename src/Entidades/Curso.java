@@ -9,34 +9,22 @@ package Entidades;
  *
  * @author diego
  */
-public class Curso extends TipoCurso{
-    
-   /*
-    en esta clase se traen las clases Teoria y laboratorio
-    ya que tienen metodos diferentes 
-    se hacen dos constructores segun el tipo de curso (teoria o lab)
-    */
+public class Curso {
     
     private String nombreCurso;
-    private Carrera carrera;
-    private TipoCurso tipoCurso;
+    private int cupo;
+    private boolean tipo; 
+    private Double costo;
+    private String profesor1;
+    private String profesor2;
+    private boolean sistemas;
+    private boolean software;
 
-    public Curso(String nombreCurso, Carrera carrera, TipoCurso tipoCurso, boolean lab, Laboratorio laboratorio) {
-        super(lab, laboratorio);
-        this.nombreCurso = nombreCurso;
-        this.carrera = carrera;
-        this.tipoCurso = tipoCurso;
+    public Curso() {
     }
 
-    public Curso(String nombreCurso, Carrera carrera, TipoCurso tipoCurso, boolean teorico, Teoria teoria) {
-        super(teorico, teoria);
-        this.nombreCurso = nombreCurso;
-        this.carrera = carrera;
-        this.tipoCurso = tipoCurso;
-    }
     
     
-
     public String getNombreCurso() {
         return nombreCurso;
     }
@@ -45,22 +33,63 @@ public class Curso extends TipoCurso{
         this.nombreCurso = nombreCurso;
     }
 
-    public Carrera getCarrera() {
-        return carrera;
+    public int getCupo() {
+        return cupo;
     }
 
-    public void setCarrera(Carrera carrera) {
-        this.carrera = carrera;
+    public void setCupo(int cupo) {
+        this.cupo = cupo;
     }
 
-    public TipoCurso getTipoCurso() {
-        return tipoCurso;
+    public boolean isTipo() {
+        return tipo;
     }
 
-    public void setTipoCurso(TipoCurso tipoCurso) {
-        this.tipoCurso = tipoCurso;
+    public void setTipo(boolean tipo) {
+        this.tipo = tipo;
     }
+
     
+
+    public Double getCosto() {
+        return costo;
+    }
+
+    public void setCosto(Double costo) {
+        this.costo = costo;
+    }
+
+    public String getProfesor1() {
+        return profesor1;
+    }
+
+    public void setProfesor1(String profesor1) {
+        this.profesor1 = profesor1;
+    }
+
+    public String getProfesor2() {
+        return profesor2;
+    }
+
+    public void setProfesor2(String profesor2) {
+        this.profesor2 = profesor2;
+    }
+
+    public boolean isSistemas() {
+        return sistemas;
+    }
+
+    public void setSistemas(boolean sistemas) {
+        this.sistemas = sistemas;
+    }
+
+    public boolean isSoftware() {
+        return software;
+    }
+
+    public void setSoftware(boolean software) {
+        this.software = software;
+    }
     
     
     
