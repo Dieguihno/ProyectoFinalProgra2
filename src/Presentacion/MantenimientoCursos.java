@@ -23,11 +23,11 @@ public class MantenimientoCursos extends javax.swing.JInternalFrame {
     NegocioCurso negocioCurso;
 
     /**
-     ya tengo el boton agregar y la tabla
-     * falta: modificar y actualizar
+     * ya tengo el boton agregar y la tabla falta: modificar y actualizar
      */
     public MantenimientoCursos() {
         initComponents();
+        negocioCurso = new NegocioCurso();
         TableModel tableModel = this.fillTableModel();
         jTableCursoLista.setModel(tableModel);
         jTextAreaMensajes.setVisible(false);
@@ -48,7 +48,7 @@ public class MantenimientoCursos extends javax.swing.JInternalFrame {
                 datos[i][5] = listProductos.get(i).getProfesor2();
                 datos[i][6] = listProductos.get(i).isSistemas();
                 datos[i][7] = listProductos.get(i).isSoftware();
-                
+
             }
             DefaultTableModel model = new DefaultTableModel(datos, columnas);
             return model;
@@ -113,7 +113,7 @@ public class MantenimientoCursos extends javax.swing.JInternalFrame {
         curso.setTipo(jCheckBoxLaboratorioCondicional.isSelected());
         curso.setSistemas(jCheckBoxSistemas.isSelected());
         curso.setSoftware(jCheckBoxSoftware.isSelected());
-        
+
         return curso;
     }
 
@@ -140,12 +140,10 @@ public class MantenimientoCursos extends javax.swing.JInternalFrame {
         jTextFieldProfesor1 = new javax.swing.JTextField();
         jLabel7 = new javax.swing.JLabel();
         jTextFieldProfesor2 = new javax.swing.JTextField();
-        jLabel8 = new javax.swing.JLabel();
         jLabel10 = new javax.swing.JLabel();
         jCheckBoxSistemas = new javax.swing.JCheckBox();
         jCheckBoxSoftware = new javax.swing.JCheckBox();
         jButtonAgregarCurso = new javax.swing.JButton();
-        jLabel11 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
         jTableCursoLista = new javax.swing.JTable();
         filler1 = new javax.swing.Box.Filler(new java.awt.Dimension(0, 0), new java.awt.Dimension(0, 0), new java.awt.Dimension(0, 32767));
@@ -170,7 +168,7 @@ public class MantenimientoCursos extends javax.swing.JInternalFrame {
 
         jLabel3.setText("Cupo total");
 
-        jLabelCupo.setText("aqui va el cupo");
+        jLabelCupo.setText("20");
 
         jLabel5.setText("Costo del curso");
 
@@ -183,8 +181,6 @@ public class MantenimientoCursos extends javax.swing.JInternalFrame {
         jLabel6.setText("Profesor asignado 1");
 
         jLabel7.setText("Profesor asignado 2");
-
-        jLabel8.setText("Comentario: este espacio se habilita si es lab");
 
         jLabel10.setText("Carrera");
 
@@ -204,8 +200,6 @@ public class MantenimientoCursos extends javax.swing.JInternalFrame {
             }
         });
 
-        jLabel11.setText("Comentario: aqui van dos clases, curso lab o teoria");
-
         jTableCursoLista.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
@@ -220,6 +214,11 @@ public class MantenimientoCursos extends javax.swing.JInternalFrame {
 
             public Class getColumnClass(int columnIndex) {
                 return types [columnIndex];
+            }
+        });
+        jTableCursoLista.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jTableCursoListaMouseClicked(evt);
             }
         });
         jScrollPane1.setViewportView(jTableCursoLista);
@@ -238,6 +237,7 @@ public class MantenimientoCursos extends javax.swing.JInternalFrame {
             }
         });
 
+        jTextAreaMensajes.setEditable(false);
         jTextAreaMensajes.setColumns(20);
         jTextAreaMensajes.setRows(5);
         jScrollPane2.setViewportView(jTextAreaMensajes);
@@ -249,53 +249,42 @@ public class MantenimientoCursos extends javax.swing.JInternalFrame {
             .addGroup(layout.createSequentialGroup()
                 .addGap(23, 23, 23)
                 .addComponent(jLabel2)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 7, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel3)
-                            .addComponent(jLabel5)
-                            .addComponent(jLabel6)
-                            .addComponent(jLabel7)
-                            .addComponent(jLabel1))
-                        .addGap(18, 18, 18)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(jLabelCupo)
-                                    .addComponent(jTextFieldProfesor1)
-                                    .addComponent(jTextFieldProfesor2, javax.swing.GroupLayout.DEFAULT_SIZE, 167, Short.MAX_VALUE)
-                                    .addComponent(jTextFieldCostoCurso, javax.swing.GroupLayout.PREFERRED_SIZE, 132, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addGroup(layout.createSequentialGroup()
-                                                .addGap(32, 32, 32)
-                                                .addComponent(jLabel8))
-                                            .addGroup(layout.createSequentialGroup()
-                                                .addGap(52, 52, 52)
-                                                .addComponent(jLabel11)))
-                                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addGap(6, 6, 6)
-                                        .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addGap(0, 0, Short.MAX_VALUE))))
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(jTextFieldNombreCurso, javax.swing.GroupLayout.PREFERRED_SIZE, 155, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(18, 18, 18)
-                                .addComponent(jCheckBoxLaboratorioCondicional))))
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(jLabel10)
                         .addGap(38, 38, 38)
                         .addComponent(jCheckBoxSistemas)
                         .addGap(51, 51, 51)
                         .addComponent(jCheckBoxSoftware)
-                        .addContainerGap())
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 709, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(0, 41, Short.MAX_VALUE))))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jLabel3)
+                                    .addComponent(jLabel5)
+                                    .addComponent(jLabel6)
+                                    .addComponent(jLabel7)
+                                    .addComponent(jLabel1))
+                                .addGap(18, 18, 18)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                            .addComponent(jLabelCupo)
+                                            .addComponent(jTextFieldProfesor1)
+                                            .addComponent(jTextFieldProfesor2, javax.swing.GroupLayout.DEFAULT_SIZE, 167, Short.MAX_VALUE)
+                                            .addComponent(jTextFieldCostoCurso, javax.swing.GroupLayout.PREFERRED_SIZE, 132, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                        .addGap(6, 6, 6)
+                                        .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addComponent(jTextFieldNombreCurso, javax.swing.GroupLayout.PREFERRED_SIZE, 155, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addGap(18, 18, 18)
+                                        .addComponent(jCheckBoxLaboratorioCondicional))))
+                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 709, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(0, 0, Short.MAX_VALUE))))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap(415, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addComponent(jButtonAgregarCurso)
@@ -336,13 +325,11 @@ public class MantenimientoCursos extends javax.swing.JInternalFrame {
                 .addGap(30, 30, 30)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel6)
-                    .addComponent(jTextFieldProfesor1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel11))
+                    .addComponent(jTextFieldProfesor1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(31, 31, 31)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel7)
-                    .addComponent(jTextFieldProfesor2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel8))
+                    .addComponent(jTextFieldProfesor2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(28, 28, 28)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel10)
@@ -356,7 +343,7 @@ public class MantenimientoCursos extends javax.swing.JInternalFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButtonModificarCurso)
                     .addComponent(jButtonEliminar))
-                .addGap(264, 264, 264)
+                .addGap(53, 53, 53)
                 .addComponent(filler1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
@@ -388,7 +375,7 @@ public class MantenimientoCursos extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_jCheckBoxSistemasActionPerformed
 
     private void jButtonAgregarCursoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonAgregarCursoActionPerformed
-        
+
         if (validarCurso()) {
             try {
                 negocioCurso.agregar(this.capturaCurso());
@@ -405,38 +392,49 @@ public class MantenimientoCursos extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_jButtonAgregarCursoActionPerformed
 
     private void jButtonModificarCursoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonModificarCursoActionPerformed
-        if (validarCurso()) {
-            try {
-                negocioCurso.Actualizar(this.capturaCurso());
-                jTextAreaMensajes.setText("curso actualizado con exito");
 
-            } catch (Exception e) {
-                jTextAreaMensajes.setText("ups ocurrio un error");
-            }
+        try {
+            negocioCurso.Actualizar(this.capturaCurso());
+            jTextAreaMensajes.setText("curso actualizado con exito");
 
-        } else {
-            jTextAreaMensajes.setVisible(true);
+        } catch (Exception e) {
+            jTextAreaMensajes.setText("ups ocurrio un error");
         }
+
+        jTextAreaMensajes.setVisible(true);
+
         limpiarCampos();
-       
+
     }//GEN-LAST:event_jButtonModificarCursoActionPerformed
 
     private void jButtonEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonEliminarActionPerformed
-        if (validarCurso()) {
-            try {
-                negocioCurso.eliminar(this.capturaCurso());
-                jTextAreaMensajes.setText("curso eliminado con exito");
 
-            } catch (Exception e) {
-                jTextAreaMensajes.setText("ups ocurrio un error");
-            }
+        try {
+            negocioCurso.eliminar(this.capturaCurso());
+            jTextAreaMensajes.setText("curso eliminado con exito");
 
-        } else {
-            jTextAreaMensajes.setVisible(true);
+        } catch (Exception e) {
+            jTextAreaMensajes.setText("ups ocurrio un error");
         }
+
+        jTextAreaMensajes.setVisible(true);
+
         limpiarCampos();
-       
+
     }//GEN-LAST:event_jButtonEliminarActionPerformed
+
+    private void jTableCursoListaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTableCursoListaMouseClicked
+        int indice = jTableCursoLista.getSelectedRow(); 
+        DefaultTableModel model = (DefaultTableModel) jTableCursoLista.getModel();
+        jTextFieldNombreCurso.setText(model.getValueAt(indice, 0).toString());
+        jCheckBoxLaboratorioCondicional.setText(model.getValueAt(indice, 1).toString());   //revisar los checkbox     
+        jTextFieldCostoCurso.setText(model.getValueAt(indice, 3).toString());
+        jTextFieldProfesor1.setText(model.getValueAt(indice, 4).toString());
+        jTextFieldProfesor2.setText(model.getValueAt(indice, 5).toString());
+        jCheckBoxSistemas.setSelected(Boolean.parseBoolean((String) model.getValueAt(indice, 6)));
+        jCheckBoxSoftware.setText(model.getValueAt(indice, 7).toString());
+        
+    }//GEN-LAST:event_jTableCursoListaMouseClicked
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -451,13 +449,11 @@ public class MantenimientoCursos extends javax.swing.JInternalFrame {
     private javax.swing.JCheckBox jCheckBoxSoftware;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
-    private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
-    private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabelCupo;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;

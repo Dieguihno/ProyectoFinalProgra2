@@ -19,6 +19,8 @@ import java.util.ArrayList;
  */
 public class Utilidades {
     
+    public static final String ARCHIVO_CURSOS = "/home/diego/Escritorio/archivos.txt"; //quitar esta ruta y ponerla en cada archivo de clase porque son txt distintos
+    public static final String TOKEN = ";";   
     
 
     public static boolean grabaArchivo(String nombreArchivo, String linea) throws Exception {

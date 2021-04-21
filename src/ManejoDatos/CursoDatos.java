@@ -17,7 +17,7 @@ import java.util.List;
 public class CursoDatos implements ICursoDatos {
 
     //todos los override de las utilidades, instanciados en la interface y el negocio
-    public static final String ARCHIVO_CURSOS = "C:\\archivos\\productos.txt"; //quitar esta ruta y ponerla en cada archivo de clase porque son txt distintos
+    public static final String ARCHIVO_CURSOS = "/home/diego/Escritorio/archivos.txt"; //quitar esta ruta y ponerla en cada archivo de clase porque son txt distintos
     public static final String TOKEN = ";";
 
     //ya tengo los metodos para grabar en un txt

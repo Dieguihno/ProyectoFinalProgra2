@@ -5,17 +5,74 @@
  */
 package Presentacion;
 
-/**
- *
- * @author diego
- */
+import Entidades.Curso;
+import Entidades.Estudiante;
+import Negocio.NegocioEstudiante;
+import static Presentacion.MantenimientoCursos.jTableCursoLista;
+import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.swing.JFrame;
+import javax.swing.table.DefaultTableModel;
+import javax.swing.table.TableModel;
+
 public class AdministradorEstudiantes extends javax.swing.JInternalFrame {
 
-    /**
-     * Creates new form AdministradorEstudiantes
-     */
+    NegocioEstudiante negocioEstudiante;
+    
     public AdministradorEstudiantes() {
         initComponents();
+        TableModel tableModel = this.fillTableModel();
+        jTableCursoLista.setModel(tableModel);
+    }
+    
+    private TableModel fillTableModel() {
+        try {
+            List<Estudiante> listProductos = negocioEstudiante.consultarTodosLosEstudiantes(); //hacer negocio Curso y las utilidades y manejo de datos curso y la interface 
+
+            Object[] columnas = new Object[]{"Nombre Curso", "laboratorio", "Cupo", "Costo", "Profesor 1 ", "Profesor 2", "ingenieria Sistemas", "ingenieria software"};
+            Object[][] datos = new Object[listProductos.size()][columnas.length];
+            for (int i = 0; i < listProductos.size(); i++) {
+                datos[i][0] = listProductos.get(i).getNombre();
+                datos[i][1] = listProductos.get(i).getApellido();
+                datos[i][2] = listProductos.get(i).getCorreo();
+                datos[i][3] = listProductos.get(i).getUsuario();
+                datos[i][4] = listProductos.get(i).getPromedio();
+                datos[i][5] = listProductos.get(i).getCarrera();
+                datos[i][6] = listProductos.get(i).getClave();
+                
+
+            }
+            DefaultTableModel model = new DefaultTableModel(datos, columnas);
+            return model;
+
+        } catch (Exception ex) {
+            Logger.getLogger(JFrame.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return null;
+    }
+    
+    private void limpiarCampos() {
+        jTextFieldNombre.setText("");
+        jTextFieldApellidos.setText("");
+        jTextFieldPromedio.setText("");
+        jTextFieldIdentificacion.setText("");
+        jTextFieldClaveAcceso.setText("");
+        jTextFieldCorreo.setText("");
+        
+    }
+    
+    private Estudiante capturaEstudiante(){
+        Estudiante estudiante = new Estudiante();
+        
+        estudiante.setNombre(jTextFieldNombre.getText());
+        estudiante.setApellido(jTextFieldApellidos.getText());
+        estudiante.setCarrera(jComboBox1.getSelectedItem().toString());
+        estudiante.setCorreo(jTextFieldCorreo.getText());
+        estudiante.setPromedio(Double.parseDouble(jTextFieldPromedio.getText()));
+        estudiante.setUsuario(jTextFieldIdentificacion.getText());
+        
+        return estudiante;
     }
 
     /**
