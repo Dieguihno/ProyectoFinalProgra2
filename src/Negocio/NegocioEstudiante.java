@@ -23,6 +23,10 @@ public class NegocioEstudiante {
         estudianteDatos = new EstudianteDatos ();
     }
     
+    public boolean insertar(Estudiante estudiante) throws Excepcion, Exception{
+        return estudianteDatos.insertar(estudiante);
+    }
+            
     public String agregar(Estudiante estudiante) throws Excepcion, Exception{
         return estudianteDatos.agregar(estudiante);
     }
@@ -41,6 +45,20 @@ public class NegocioEstudiante {
     
     public List<Estudiante> consultarTodosLosEstudiantes() throws Exception{
         return estudianteDatos.consultarTodosLosEstudiantes();
+    }
+    
+    public boolean login(String login, String password) throws Excepcion  {
+        Estudiante estudiante = estudianteDatos.login(login);
+        
+        if (estudiante.getUsuario().equals(login)) {
+            if (estudiante.getClave().equals(password)) {
+                return true;
+            } else {
+                return false;
+            }
+        } else {
+            return false;
+        }
     }
     
     

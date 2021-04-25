@@ -25,4 +25,8 @@ public interface IEstudianteDatos {
     
     List<Estudiante> consultarTodosLosEstudiantes() throws Exception;
     
+    Estudiante login(String login) throws Excepcion;
+    
+    boolean insertar(Estudiante estudiante) throws Excepcion, Exception;
+    
 }

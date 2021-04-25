@@ -18,17 +18,31 @@ import java.util.List;
 public class EstudianteDatos implements IEstudianteDatos {
     
     //todos los override de las utilidades, instanciados en la interface y el negocio
-    public static final String ARCHIVO_CURSOS = "/home/diego/Escritorio/archivos.txt"; //quitar esta ruta y ponerla en cada archivo de clase porque son txt distintos
+    public static final String ARCHIVO_ESTUDIANTE = "/home/diego/Escritorio/estudiante.txt"; //quitar esta ruta y ponerla en cada archivo de clase porque son txt distintos
     public static final String TOKEN = ";";
 
     //ya tengo los metodos para grabar en un txt
     //luego que los tengo instanciarlos en las reglas de negocio y la interface
+    
+    @Override
+    public boolean insertar(Estudiante estudiante) throws Excepcion, Exception {
+        String linea = EstudianteLinea(estudiante);
+        return Utilidades.grabaArchivo(Utilidades.ARCHIVO_ESTUDIANTE, linea);
+    }
+    
+    private String EstudianteLinea(Estudiante estudiante) { //importante
+        return estudiante.getNombre() + Utilidades.TOKEN + estudiante.getApellido() + Utilidades.TOKEN +
+                estudiante.getCarrera() + Utilidades.TOKEN + estudiante.getCorreo() + Utilidades.TOKEN +
+                estudiante.getUsuario() + Utilidades.TOKEN + estudiante.getClave();
+
+    }
+    
     @Override
     public String agregar(Estudiante estudiante) throws Excepcion, Exception {
 
         String nombreEstudiante = null;
         String lineaEstudiante = mapeaCursoLinea(estudiante); //nos vamos a hacer mapeaCursoLinea
-        boolean grabaFicheroCurso = Utilidades.grabaArchivo(ARCHIVO_CURSOS, lineaEstudiante);
+        boolean grabaFicheroCurso = Utilidades.grabaArchivo(ARCHIVO_ESTUDIANTE, lineaEstudiante);
         if (grabaFicheroCurso) {
             nombreEstudiante = estudiante.getNombre();
             return nombreEstudiante;
@@ -52,7 +66,7 @@ public class EstudianteDatos implements IEstudianteDatos {
     //metodo para eliminar
     @Override
     public String eliminar(Estudiante estudiante) throws Excepcion, Exception {
-        boolean eliminar = Utilidades.eliminar(ARCHIVO_CURSOS, estudiante.getNombre());
+        boolean eliminar = Utilidades.eliminar(ARCHIVO_ESTUDIANTE, estudiante.getNombre());
         if (eliminar) {
             return estudiante.getNombre();
         }
@@ -64,7 +78,7 @@ public class EstudianteDatos implements IEstudianteDatos {
     @Override
     public String Actualizar(Estudiante estudiante) throws Excepcion, Exception {
         String lineaEstudiante = mapeaCursoLinea(estudiante);
-        boolean actualizar = Utilidades.actualizar(ARCHIVO_CURSOS, estudiante.getNombre(), lineaEstudiante);
+        boolean actualizar = Utilidades.actualizar(ARCHIVO_ESTUDIANTE, estudiante.getNombre(), lineaEstudiante);
         if (actualizar) {
             return estudiante.getNombre();
         }
@@ -75,7 +89,7 @@ public class EstudianteDatos implements IEstudianteDatos {
     @Override
     public Estudiante consultar(String nombreEstudiante) throws Excepcion {
         try {
-            String lineaEstudiante = Utilidades.buscarEnArchivo(ARCHIVO_CURSOS, nombreEstudiante);
+            String lineaEstudiante = Utilidades.buscarEnArchivo(ARCHIVO_ESTUDIANTE, nombreEstudiante);
             return mapeaLineaCurso(lineaEstudiante);
         } catch (Exception e) {
         }
@@ -87,7 +101,7 @@ public class EstudianteDatos implements IEstudianteDatos {
     @Override
     public List<Estudiante> consultarTodosLosEstudiantes() throws Exception {
         List<Estudiante> listaEstudiantes = new ArrayList<>();
-        List<String> listaLineas = Utilidades.arregloArchivo(ARCHIVO_CURSOS);
+        List<String> listaLineas = Utilidades.arregloArchivo(ARCHIVO_ESTUDIANTE);
         for (String listaLinea : listaLineas) {
             Estudiante cursoTemporal = mapeaLineaCurso(listaLinea);
             listaEstudiantes.add(cursoTemporal);
@@ -112,6 +126,11 @@ public class EstudianteDatos implements IEstudianteDatos {
 
         }
         return estudiante;
+    }
+    
+    public Estudiante login(String login) throws Excepcion {
+        String linea = Utilidades.buscarEnArchivo(Utilidades.ARCHIVO_ESTUDIANTE, login);
+        return mapeaLineaCurso(linea);
     }
     
 }

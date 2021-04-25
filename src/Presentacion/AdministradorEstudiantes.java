@@ -13,19 +13,20 @@ import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JFrame;
+import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableModel;
 
 public class AdministradorEstudiantes extends javax.swing.JInternalFrame {
 
     NegocioEstudiante negocioEstudiante;
-    
+
     public AdministradorEstudiantes() {
         initComponents();
         TableModel tableModel = this.fillTableModel();
         jTableCursoLista.setModel(tableModel);
     }
-    
+
     private TableModel fillTableModel() {
         try {
             List<Estudiante> listProductos = negocioEstudiante.consultarTodosLosEstudiantes(); //hacer negocio Curso y las utilidades y manejo de datos curso y la interface 
@@ -40,7 +41,6 @@ public class AdministradorEstudiantes extends javax.swing.JInternalFrame {
                 datos[i][4] = listProductos.get(i).getPromedio();
                 datos[i][5] = listProductos.get(i).getCarrera();
                 datos[i][6] = listProductos.get(i).getClave();
-                
 
             }
             DefaultTableModel model = new DefaultTableModel(datos, columnas);
@@ -51,7 +51,7 @@ public class AdministradorEstudiantes extends javax.swing.JInternalFrame {
         }
         return null;
     }
-    
+
     private void limpiarCampos() {
         jTextFieldNombre.setText("");
         jTextFieldApellidos.setText("");
@@ -59,20 +59,32 @@ public class AdministradorEstudiantes extends javax.swing.JInternalFrame {
         jTextFieldIdentificacion.setText("");
         jTextFieldClaveAcceso.setText("");
         jTextFieldCorreo.setText("");
-        
+
     }
-    
-    private Estudiante capturaEstudiante(){
+
+    private Estudiante capturaEstudiante() {
         Estudiante estudiante = new Estudiante();
-        
+
         estudiante.setNombre(jTextFieldNombre.getText());
         estudiante.setApellido(jTextFieldApellidos.getText());
         estudiante.setCarrera(jComboBox1.getSelectedItem().toString());
         estudiante.setCorreo(jTextFieldCorreo.getText());
         estudiante.setPromedio(Double.parseDouble(jTextFieldPromedio.getText()));
         estudiante.setUsuario(jTextFieldIdentificacion.getText());
-        
+
         return estudiante;
+    }
+
+    private boolean validar() {
+
+        if (jTextFieldNombre.getText().isEmpty() || jTextFieldIdentificacion.getText().isEmpty()
+                || jTextFieldApellidos.getText().isEmpty() || jTextFieldCorreo.getText().isEmpty()
+                || jTextFieldPromedio.getText().isEmpty() || jTextFieldClaveAcceso.getText().isEmpty()) {
+            JOptionPane.showMessageDialog(rootPane, "debe llenar todos los campos");
+            return false;
+
+        }
+        return true;
     }
 
     /**
@@ -144,6 +156,11 @@ public class AdministradorEstudiantes extends javax.swing.JInternalFrame {
         jScrollPane1.setViewportView(jTable1);
 
         jButtonAgregar.setText("Agregar Estudiante");
+        jButtonAgregar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonAgregarActionPerformed(evt);
+            }
+        });
 
         jButtonModificar.setText("Modificar Informacion");
 
@@ -176,11 +193,14 @@ public class AdministradorEstudiantes extends javax.swing.JInternalFrame {
                                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                             .addComponent(jLabel4)
                                             .addComponent(jLabel5))
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, 199, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                            .addComponent(jTextFieldPromedio, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                        .addGap(34, 34, 34))
+                                            .addGroup(layout.createSequentialGroup()
+                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                                .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, 199, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                            .addGroup(layout.createSequentialGroup()
+                                                .addGap(39, 39, 39)
+                                                .addComponent(jTextFieldPromedio, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED))
                                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                                             .addComponent(jLabel1, javax.swing.GroupLayout.Alignment.LEADING)
@@ -190,7 +210,8 @@ public class AdministradorEstudiantes extends javax.swing.JInternalFrame {
                                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                             .addComponent(jTextFieldApellidos, javax.swing.GroupLayout.PREFERRED_SIZE, 111, javax.swing.GroupLayout.PREFERRED_SIZE)
                                             .addComponent(jTextFieldNombre, javax.swing.GroupLayout.PREFERRED_SIZE, 111, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                            .addComponent(jTextFieldCorreo, javax.swing.GroupLayout.PREFERRED_SIZE, 181, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                            .addComponent(jTextFieldCorreo, javax.swing.GroupLayout.PREFERRED_SIZE, 181, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addComponent(jTextFieldIdentificacion, javax.swing.GroupLayout.PREFERRED_SIZE, 111, javax.swing.GroupLayout.PREFERRED_SIZE))
                                         .addGap(52, 52, 52)))
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -203,10 +224,7 @@ public class AdministradorEstudiantes extends javax.swing.JInternalFrame {
                                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                             .addComponent(jLabelCedulaUsuario)
                                             .addComponent(jTextFieldClaveAcceso, javax.swing.GroupLayout.PREFERRED_SIZE, 115, javax.swing.GroupLayout.PREFERRED_SIZE)))))
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(jLabel3)
-                                .addGap(55, 55, 55)
-                                .addComponent(jTextFieldIdentificacion, javax.swing.GroupLayout.PREFERRED_SIZE, 111, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                            .addComponent(jLabel3)))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(21, 21, 21)
                         .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 652, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -269,6 +287,33 @@ public class AdministradorEstudiantes extends javax.swing.JInternalFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void jButtonAgregarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonAgregarActionPerformed
+        // TODO add your handling code here:
+
+        if (this.validar()) {
+            Estudiante estudiante = this.capturaEstudiante();
+            try {
+
+                if (negocioEstudiante.insertar(estudiante)) {
+                    JOptionPane.showMessageDialog(this, "Insercion exitosa");
+                } else {
+                    JOptionPane.showMessageDialog(this, "Insercion no exitosa");
+                }
+                TableModel tableModel = this.fillTableModel();
+                jTableCursoLista.setModel(tableModel);
+
+            } catch (Exception ex) {
+                JOptionPane.showMessageDialog(this,"ha ocurrido un error");
+
+            } finally {
+                limpiarCampos();
+            }
+
+        }
+
+           
+    }//GEN-LAST:event_jButtonAgregarActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
