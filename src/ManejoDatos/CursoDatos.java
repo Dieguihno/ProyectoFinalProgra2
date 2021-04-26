@@ -16,16 +16,15 @@ import java.util.List;
  */
 public class CursoDatos implements ICursoDatos {
 
-    //todos los override de las utilidades, instanciados en la interface y el negocio
-    public static final String ARCHIVO_CURSOS = "/home/diego/Escritorio/cursos.txt"; //quitar esta ruta y ponerla en cada archivo de clase porque son txt distintos
+    
+    public static final String ARCHIVO_CURSOS = "/home/diego/Escritorio/cursos.txt"; 
     public static final String TOKEN = ";";
 
-    //ya tengo los metodos para grabar en un txt
-    //luego que los tengo instanciarlos en las reglas de negocio y la interface
+    
     public String agregar(Curso curso) throws Excepcion, Exception {
 
         String nombreCurso = null;
-        String lineaCurso = mapeaCursoLinea(curso); //nos vamos a hacer mapeaCursoLinea
+        String lineaCurso = mapeaCursoLinea(curso); 
         boolean grabaFicheroCurso = Utilidades.grabaArchivo(ARCHIVO_CURSOS, lineaCurso);
         if (grabaFicheroCurso) {
             nombreCurso = curso.getNombreCurso();
@@ -48,7 +47,7 @@ public class CursoDatos implements ICursoDatos {
         return builder.toString();
     }
 
-    //metodo para eliminar
+    
     @Override
     public String eliminar(Curso curso) throws Excepcion, Exception {
         boolean eliminar = Utilidades.eliminar(ARCHIVO_CURSOS, curso.getNombreCurso());
@@ -59,7 +58,7 @@ public class CursoDatos implements ICursoDatos {
 
     }
 
-    //metodo para actualizar
+    
     @Override
     public String Actualizar(Curso curso) throws Excepcion, Exception {
         String lineaCurso = mapeaCursoLinea(curso);
@@ -70,7 +69,7 @@ public class CursoDatos implements ICursoDatos {
         return "";
     }
 
-    //metodo de consulta
+    
     @Override
     public Curso consultar(String nombreCurso) throws Excepcion {
         try {
@@ -82,7 +81,7 @@ public class CursoDatos implements ICursoDatos {
 
     }
 
-//para meter los datos en las tablas
+
     @Override
     public List<Curso> consultarTodosLosCursos() throws Exception {
         List<Curso> listaCursos = new ArrayList<>();
@@ -94,7 +93,7 @@ public class CursoDatos implements ICursoDatos {
         return listaCursos;
     }
 
-//otro metodo importante para el array
+
     private Curso mapeaLineaCurso(String lineaCurso) {
         Curso curso = new Curso();
         try {

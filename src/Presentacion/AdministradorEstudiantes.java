@@ -5,10 +5,8 @@
  */
 package Presentacion;
 
-import Entidades.Curso;
 import Entidades.Estudiante;
 import Negocio.NegocioEstudiante;
-import static Presentacion.MantenimientoCursos.jTableCursoLista;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -23,24 +21,24 @@ public class AdministradorEstudiantes extends javax.swing.JInternalFrame {
 
     public AdministradorEstudiantes() {
         initComponents();
-        TableModel tableModel = this.fillTableModel();
-        jTableCursoLista.setModel(tableModel);
+        TableModel tableModelEst = this.fillTableModel();
+        jTableEstudiante.setModel(tableModelEst);
     }
 
     private TableModel fillTableModel() {
         try {
-            List<Estudiante> listProductos = negocioEstudiante.consultarTodosLosEstudiantes(); //hacer negocio Curso y las utilidades y manejo de datos curso y la interface 
-
-            Object[] columnas = new Object[]{"Nombre Curso", "laboratorio", "Cupo", "Costo", "Profesor 1 ", "Profesor 2", "ingenieria Sistemas", "ingenieria software"};
-            Object[][] datos = new Object[listProductos.size()][columnas.length];
-            for (int i = 0; i < listProductos.size(); i++) {
-                datos[i][0] = listProductos.get(i).getNombre();
-                datos[i][1] = listProductos.get(i).getApellido();
-                datos[i][2] = listProductos.get(i).getCorreo();
-                datos[i][3] = listProductos.get(i).getUsuario();
-                datos[i][4] = listProductos.get(i).getPromedio();
-                datos[i][5] = listProductos.get(i).getCarrera();
-                datos[i][6] = listProductos.get(i).getClave();
+            List <Estudiante> listEstudiantes = negocioEstudiante.consultarTodosLosEstudiantes();
+           
+            Object[] columnas = new Object[]{"Nombre", "Apellido", "Correo", "Promedio", "Carrera ", "Usuario", "Clave"};
+            Object[][] datos = new Object[listEstudiantes.size()][columnas.length];
+            for (int i = 0; i < listEstudiantes.size(); i++) {
+                datos[i][0] = listEstudiantes.get(i).getNombre();
+                datos[i][1] = listEstudiantes.get(i).getApellido();
+                datos[i][2] = listEstudiantes.get(i).getCorreo();
+                datos[i][3] = listEstudiantes.get(i).getPromedio();
+                datos[i][4] = listEstudiantes.get(i).getCarrera();
+                datos[i][5] = listEstudiantes.get(i).getUsuario();
+                datos[i][6] = listEstudiantes.get(i).getClave();
 
             }
             DefaultTableModel model = new DefaultTableModel(datos, columnas);
@@ -107,7 +105,7 @@ public class AdministradorEstudiantes extends javax.swing.JInternalFrame {
         jLabel5 = new javax.swing.JLabel();
         jComboBox1 = new javax.swing.JComboBox<>();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
+        jTableEstudiante = new javax.swing.JTable();
         jButtonAgregar = new javax.swing.JButton();
         jButtonModificar = new javax.swing.JButton();
         jButtonActualizar = new javax.swing.JButton();
@@ -137,7 +135,7 @@ public class AdministradorEstudiantes extends javax.swing.JInternalFrame {
 
         jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Ingenieria en sistemas", "Ingenieria del software" }));
 
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        jTableEstudiante.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
             },
@@ -153,7 +151,7 @@ public class AdministradorEstudiantes extends javax.swing.JInternalFrame {
                 return types [columnIndex];
             }
         });
-        jScrollPane1.setViewportView(jTable1);
+        jScrollPane1.setViewportView(jTableEstudiante);
 
         jButtonAgregar.setText("Agregar Estudiante");
         jButtonAgregar.addActionListener(new java.awt.event.ActionListener() {
@@ -301,10 +299,10 @@ public class AdministradorEstudiantes extends javax.swing.JInternalFrame {
                     JOptionPane.showMessageDialog(this, "Insercion no exitosa");
                 }
                 TableModel tableModel = this.fillTableModel();
-                jTableCursoLista.setModel(tableModel);
+                jTableEstudiante.setModel(tableModel);
 
             } catch (Exception ex) {
-                JOptionPane.showMessageDialog(this,"ha ocurrido un error");
+                JOptionPane.showMessageDialog(this, "ha ocurrido un error");
 
             } finally {
                 limpiarCampos();
@@ -312,7 +310,7 @@ public class AdministradorEstudiantes extends javax.swing.JInternalFrame {
 
         }
 
-           
+
     }//GEN-LAST:event_jButtonAgregarActionPerformed
 
 
@@ -332,7 +330,7 @@ public class AdministradorEstudiantes extends javax.swing.JInternalFrame {
     private javax.swing.JLabel jLabelCedulaUsuario;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
-    private javax.swing.JTable jTable1;
+    private javax.swing.JTable jTableEstudiante;
     private javax.swing.JTextArea jTextAreaMensaje;
     private javax.swing.JTextField jTextFieldApellidos;
     private javax.swing.JTextField jTextFieldClaveAcceso;

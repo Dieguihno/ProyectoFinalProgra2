@@ -12,6 +12,7 @@ package Presentacion;
 public class Universidad extends javax.swing.JFrame {
 
     MantenimientoCursos mantenimientoCursos;
+    AdministradorEstudiantes administradorEstudiante;
 
     /**
      * Creates new form Matricula
@@ -21,6 +22,10 @@ public class Universidad extends javax.swing.JFrame {
         mantenimientoCursos = new MantenimientoCursos();
         mantenimientoCursos.setVisible(false);
         desktopPane.add(mantenimientoCursos);
+        
+        administradorEstudiante = new AdministradorEstudiantes();
+        administradorEstudiante.setVisible(false);
+        desktopPane.add(administradorEstudiante);
     }
 
     /**
@@ -41,7 +46,7 @@ public class Universidad extends javax.swing.JFrame {
         exitMenuItem = new javax.swing.JMenuItem();
         editMenu = new javax.swing.JMenu();
         CursosMenuItem = new javax.swing.JMenuItem();
-        copyMenuItem = new javax.swing.JMenuItem();
+        EstudiantesMenuItem = new javax.swing.JMenuItem();
         pasteMenuItem = new javax.swing.JMenuItem();
         deleteMenuItem = new javax.swing.JMenuItem();
         helpMenu = new javax.swing.JMenu();
@@ -89,9 +94,14 @@ public class Universidad extends javax.swing.JFrame {
         });
         editMenu.add(CursosMenuItem);
 
-        copyMenuItem.setMnemonic('y');
-        copyMenuItem.setText("Copy");
-        editMenu.add(copyMenuItem);
+        EstudiantesMenuItem.setMnemonic('y');
+        EstudiantesMenuItem.setText("Administrador de estudiantes");
+        EstudiantesMenuItem.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                EstudiantesMenuItemActionPerformed(evt);
+            }
+        });
+        editMenu.add(EstudiantesMenuItem);
 
         pasteMenuItem.setMnemonic('p');
         pasteMenuItem.setText("Paste");
@@ -122,11 +132,11 @@ public class Universidad extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(desktopPane, javax.swing.GroupLayout.DEFAULT_SIZE, 400, Short.MAX_VALUE)
+            .addComponent(desktopPane, javax.swing.GroupLayout.DEFAULT_SIZE, 991, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(desktopPane, javax.swing.GroupLayout.DEFAULT_SIZE, 279, Short.MAX_VALUE)
+            .addComponent(desktopPane, javax.swing.GroupLayout.DEFAULT_SIZE, 470, Short.MAX_VALUE)
         );
 
         pack();
@@ -139,6 +149,11 @@ public class Universidad extends javax.swing.JFrame {
     private void CursosMenuItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CursosMenuItemActionPerformed
         mantenimientoCursos.setVisible(true);
     }//GEN-LAST:event_CursosMenuItemActionPerformed
+
+    private void EstudiantesMenuItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_EstudiantesMenuItemActionPerformed
+        
+        administradorEstudiante.setVisible(true);
+    }//GEN-LAST:event_EstudiantesMenuItemActionPerformed
 
     /**
      * @param args the command line arguments
@@ -178,9 +193,9 @@ public class Universidad extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JMenuItem CursosMenuItem;
+    private javax.swing.JMenuItem EstudiantesMenuItem;
     private javax.swing.JMenuItem aboutMenuItem;
     private javax.swing.JMenuItem contentMenuItem;
-    private javax.swing.JMenuItem copyMenuItem;
     private javax.swing.JMenuItem deleteMenuItem;
     private javax.swing.JDesktopPane desktopPane;
     private javax.swing.JMenu editMenu;
