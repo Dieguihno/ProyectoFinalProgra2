@@ -21,8 +21,10 @@ public class AdministradorEstudiantes extends javax.swing.JInternalFrame {
 
     public AdministradorEstudiantes() {
         initComponents();
+        negocioEstudiante = new NegocioEstudiante();
         TableModel tableModelEst = this.fillTableModel();
         jTableEstudiante.setModel(tableModelEst);
+        
     }
 
     private TableModel fillTableModel() {
