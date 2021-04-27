@@ -77,9 +77,9 @@ public class EstudianteDatos implements IEstudianteDatos {
     }
 
     @Override
-    public Estudiante consultar(String nombreEstudiante) throws Excepcion {
+    public Estudiante consultar(String identificacion) throws Excepcion {
         try {
-            String lineaEstudiante = Utilidades.buscarEnArchivo(ARCHIVO_ESTUDIANTE, nombreEstudiante);
+            String lineaEstudiante = Utilidades.buscarEnArchivo(ARCHIVO_ESTUDIANTE, identificacion);
             return mapeaLineaEstudiante(lineaEstudiante);
         } catch (Exception e) {
         }

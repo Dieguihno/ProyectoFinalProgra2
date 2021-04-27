@@ -17,10 +17,14 @@ import javax.swing.JOptionPane;
 public class Login extends javax.swing.JFrame {
 
     NegocioEstudiante negocioEstudiante;
+    MatriculaCursos matriculaCursos;
 
     public Login() {
         initComponents();
         negocioEstudiante = new NegocioEstudiante();
+        matriculaCursos = new MatriculaCursos();
+        matriculaCursos.setVisible(false);
+
     }
 
     private boolean validar() {
@@ -147,8 +151,12 @@ public class Login extends javax.swing.JFrame {
                     char[] charArray = jTextFieldClave.getPassword();
                     String password = new String(charArray);
                     if (negocioEstudiante.login(jTextFieldUsuario.getText(), password)) {
-                        MatriculaCursos matricula = new MatriculaCursos();
-                        matricula.setVisible(true);
+                        Universidad universidad = new Universidad();
+                        universidad.setVisible(true);
+                        
+                        universidad.administradorEstudiante.setEnabled(false);
+                        universidad.mantenimientoCursos.setEnabled(false);
+
                     } else {
                         jLabelMensaje.setVisible(true);
                         jLabelMensaje.setText("Revise sus credenciales");
@@ -203,7 +211,7 @@ public class Login extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButtonIngresar;
+    public javax.swing.JButton jButtonIngresar;
     private javax.swing.JButton jButtonSalir;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;

@@ -5,18 +5,25 @@
  */
 package Presentacion;
 
+import Negocio.NegocioEstudiante;
+
 /**
  *
  * @author diego
  */
 public class MatriculaCursos extends javax.swing.JInternalFrame {
 
-    /**
-     * Creates new form MatriculaCursos
-     */
+    NegocioEstudiante negocioEstudiante;
+    
+    
     public MatriculaCursos() {
         initComponents();
+        negocioEstudiante = new NegocioEstudiante();
+        
+        
+        
     }
+   
 
     /**
      * This method is called from within the constructor to initialize the form.

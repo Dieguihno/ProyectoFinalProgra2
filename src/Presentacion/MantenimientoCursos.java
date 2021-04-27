@@ -384,11 +384,15 @@ public class MantenimientoCursos extends javax.swing.JInternalFrame {
             } catch (Exception e) {
                 jTextAreaMensajes.setText("ups ocurrio un error");
             }
+            finally{
+                limpiarCampos();
+            }
 
         } else {
             jTextAreaMensajes.setVisible(true);
-        }
-        limpiarCampos();
+        } 
+        
+        
     }//GEN-LAST:event_jButtonAgregarCursoActionPerformed
 
     private void jButtonModificarCursoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonModificarCursoActionPerformed

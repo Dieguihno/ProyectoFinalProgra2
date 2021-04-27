@@ -5,6 +5,8 @@
  */
 package Presentacion;
 
+import java.util.Locale;
+
 /**
  *
  * @author diego
@@ -13,6 +15,7 @@ public class Universidad extends javax.swing.JFrame {
 
     MantenimientoCursos mantenimientoCursos;
     AdministradorEstudiantes administradorEstudiante;
+    MatriculaCursos matriculaCursos;
 
     /**
      * Creates new form Matricula
@@ -26,6 +29,10 @@ public class Universidad extends javax.swing.JFrame {
         administradorEstudiante = new AdministradorEstudiantes();
         administradorEstudiante.setVisible(false);
         desktopPane.add(administradorEstudiante);
+        
+        matriculaCursos = new MatriculaCursos();
+        matriculaCursos.setVisible(false);
+        desktopPane.add(matriculaCursos);
     }
 
     /**
@@ -37,42 +44,38 @@ public class Universidad extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jMenuBar1 = new javax.swing.JMenuBar();
+        jMenu1 = new javax.swing.JMenu();
+        jMenu2 = new javax.swing.JMenu();
+        jMenu3 = new javax.swing.JMenu();
         desktopPane = new javax.swing.JDesktopPane();
         menuBar = new javax.swing.JMenuBar();
         fileMenu = new javax.swing.JMenu();
-        openMenuItem = new javax.swing.JMenuItem();
-        saveMenuItem = new javax.swing.JMenuItem();
-        saveAsMenuItem = new javax.swing.JMenuItem();
         exitMenuItem = new javax.swing.JMenuItem();
-        editMenu = new javax.swing.JMenu();
+        MenuAdministrativo = new javax.swing.JMenu();
         CursosMenuItem = new javax.swing.JMenuItem();
         EstudiantesMenuItem = new javax.swing.JMenuItem();
-        pasteMenuItem = new javax.swing.JMenuItem();
-        deleteMenuItem = new javax.swing.JMenuItem();
+        jMenu4 = new javax.swing.JMenu();
+        jMenuItemMatricula = new javax.swing.JMenuItem();
         helpMenu = new javax.swing.JMenu();
         contentMenuItem = new javax.swing.JMenuItem();
         aboutMenuItem = new javax.swing.JMenuItem();
 
+        jMenu1.setText("File");
+        jMenuBar1.add(jMenu1);
+
+        jMenu2.setText("Edit");
+        jMenuBar1.add(jMenu2);
+
+        jMenu3.setText("jMenu3");
+
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         fileMenu.setMnemonic('f');
-        fileMenu.setText("File");
-
-        openMenuItem.setMnemonic('o');
-        openMenuItem.setText("Open");
-        fileMenu.add(openMenuItem);
-
-        saveMenuItem.setMnemonic('s');
-        saveMenuItem.setText("Save");
-        fileMenu.add(saveMenuItem);
-
-        saveAsMenuItem.setMnemonic('a');
-        saveAsMenuItem.setText("Save As ...");
-        saveAsMenuItem.setDisplayedMnemonicIndex(5);
-        fileMenu.add(saveAsMenuItem);
+        fileMenu.setText("Archivo");
 
         exitMenuItem.setMnemonic('x');
-        exitMenuItem.setText("Exit");
+        exitMenuItem.setText("Salir");
         exitMenuItem.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 exitMenuItemActionPerformed(evt);
@@ -82,8 +85,8 @@ public class Universidad extends javax.swing.JFrame {
 
         menuBar.add(fileMenu);
 
-        editMenu.setMnemonic('e');
-        editMenu.setText("Edit");
+        MenuAdministrativo.setMnemonic('e');
+        MenuAdministrativo.setText("Administrativos");
 
         CursosMenuItem.setMnemonic('t');
         CursosMenuItem.setText("Administrador cursos");
@@ -92,7 +95,7 @@ public class Universidad extends javax.swing.JFrame {
                 CursosMenuItemActionPerformed(evt);
             }
         });
-        editMenu.add(CursosMenuItem);
+        MenuAdministrativo.add(CursosMenuItem);
 
         EstudiantesMenuItem.setMnemonic('y');
         EstudiantesMenuItem.setText("Administrador de estudiantes");
@@ -101,17 +104,21 @@ public class Universidad extends javax.swing.JFrame {
                 EstudiantesMenuItemActionPerformed(evt);
             }
         });
-        editMenu.add(EstudiantesMenuItem);
+        MenuAdministrativo.add(EstudiantesMenuItem);
 
-        pasteMenuItem.setMnemonic('p');
-        pasteMenuItem.setText("Paste");
-        editMenu.add(pasteMenuItem);
+        menuBar.add(MenuAdministrativo);
 
-        deleteMenuItem.setMnemonic('d');
-        deleteMenuItem.setText("Delete");
-        editMenu.add(deleteMenuItem);
+        jMenu4.setText("Estudiantes");
 
-        menuBar.add(editMenu);
+        jMenuItemMatricula.setText("Matricula estudiantes");
+        jMenuItemMatricula.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItemMatriculaActionPerformed(evt);
+            }
+        });
+        jMenu4.add(jMenuItemMatricula);
+
+        menuBar.add(jMenu4);
 
         helpMenu.setMnemonic('h');
         helpMenu.setText("Help");
@@ -147,6 +154,7 @@ public class Universidad extends javax.swing.JFrame {
     }//GEN-LAST:event_exitMenuItemActionPerformed
 
     private void CursosMenuItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CursosMenuItemActionPerformed
+        
         mantenimientoCursos.setVisible(true);
     }//GEN-LAST:event_CursosMenuItemActionPerformed
 
@@ -154,6 +162,10 @@ public class Universidad extends javax.swing.JFrame {
         
         administradorEstudiante.setVisible(true);
     }//GEN-LAST:event_EstudiantesMenuItemActionPerformed
+
+    private void jMenuItemMatriculaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemMatriculaActionPerformed
+       matriculaCursos.setVisible(true);
+    }//GEN-LAST:event_jMenuItemMatriculaActionPerformed
 
     /**
      * @param args the command line arguments
@@ -194,19 +206,20 @@ public class Universidad extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JMenuItem CursosMenuItem;
     private javax.swing.JMenuItem EstudiantesMenuItem;
+    private javax.swing.JMenu MenuAdministrativo;
     private javax.swing.JMenuItem aboutMenuItem;
     private javax.swing.JMenuItem contentMenuItem;
-    private javax.swing.JMenuItem deleteMenuItem;
     private javax.swing.JDesktopPane desktopPane;
-    private javax.swing.JMenu editMenu;
     private javax.swing.JMenuItem exitMenuItem;
     private javax.swing.JMenu fileMenu;
     private javax.swing.JMenu helpMenu;
+    private javax.swing.JMenu jMenu1;
+    private javax.swing.JMenu jMenu2;
+    private javax.swing.JMenu jMenu3;
+    private javax.swing.JMenu jMenu4;
+    private javax.swing.JMenuBar jMenuBar1;
+    private javax.swing.JMenuItem jMenuItemMatricula;
     private javax.swing.JMenuBar menuBar;
-    private javax.swing.JMenuItem openMenuItem;
-    private javax.swing.JMenuItem pasteMenuItem;
-    private javax.swing.JMenuItem saveAsMenuItem;
-    private javax.swing.JMenuItem saveMenuItem;
     // End of variables declaration//GEN-END:variables
 
 }
