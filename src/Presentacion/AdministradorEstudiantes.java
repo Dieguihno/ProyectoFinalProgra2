@@ -24,13 +24,13 @@ public class AdministradorEstudiantes extends javax.swing.JInternalFrame {
         negocioEstudiante = new NegocioEstudiante();
         TableModel tableModelEst = this.fillTableModel();
         jTableEstudiante.setModel(tableModelEst);
-        
+
     }
 
     private TableModel fillTableModel() {
         try {
-            List <Estudiante> listEstudiantes = negocioEstudiante.consultarTodosLosEstudiantes();
-           
+            List<Estudiante> listEstudiantes = negocioEstudiante.consultarTodosLosEstudiantes();
+
             Object[] columnas = new Object[]{"Nombre", "Apellido", "Correo", "Promedio", "Carrera ", "Usuario", "Clave"};
             Object[][] datos = new Object[listEstudiantes.size()][columnas.length];
             for (int i = 0; i < listEstudiantes.size(); i++) {
@@ -67,10 +67,11 @@ public class AdministradorEstudiantes extends javax.swing.JInternalFrame {
 
         estudiante.setNombre(jTextFieldNombre.getText());
         estudiante.setApellido(jTextFieldApellidos.getText());
-        estudiante.setCarrera(jComboBox1.getSelectedItem().toString());
         estudiante.setCorreo(jTextFieldCorreo.getText());
         estudiante.setPromedio(Double.parseDouble(jTextFieldPromedio.getText()));
+        estudiante.setCarrera(jComboBox1.getSelectedItem().toString());
         estudiante.setUsuario(jTextFieldIdentificacion.getText());
+        estudiante.setClave(jTextFieldClaveAcceso.getText());
 
         return estudiante;
     }
@@ -111,10 +112,6 @@ public class AdministradorEstudiantes extends javax.swing.JInternalFrame {
         jButtonAgregar = new javax.swing.JButton();
         jButtonModificar = new javax.swing.JButton();
         jButtonActualizar = new javax.swing.JButton();
-        jScrollPane2 = new javax.swing.JScrollPane();
-        jTextAreaMensaje = new javax.swing.JTextArea();
-        jLabel6 = new javax.swing.JLabel();
-        jLabelCedulaUsuario = new javax.swing.JLabel();
         jLabel8 = new javax.swing.JLabel();
         jTextFieldClaveAcceso = new javax.swing.JTextField();
         jLabel9 = new javax.swing.JLabel();
@@ -166,14 +163,6 @@ public class AdministradorEstudiantes extends javax.swing.JInternalFrame {
 
         jButtonActualizar.setText("Actualizar");
 
-        jTextAreaMensaje.setColumns(20);
-        jTextAreaMensaje.setRows(5);
-        jScrollPane2.setViewportView(jTextAreaMensaje);
-
-        jLabel6.setText("Usuario");
-
-        jLabelCedulaUsuario.setText("Hacer que sea la cedula");
-
         jLabel8.setText("Clave");
 
         jLabel9.setText("Correo electronico");
@@ -214,16 +203,12 @@ public class AdministradorEstudiantes extends javax.swing.JInternalFrame {
                                             .addComponent(jTextFieldIdentificacion, javax.swing.GroupLayout.PREFERRED_SIZE, 111, javax.swing.GroupLayout.PREFERRED_SIZE))
                                         .addGap(52, 52, 52)))
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addComponent(jButtonAgregar)
                                     .addGroup(layout.createSequentialGroup()
-                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addComponent(jLabel6)
-                                            .addComponent(jLabel8))
-                                        .addGap(37, 37, 37)
-                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addComponent(jLabelCedulaUsuario)
-                                            .addComponent(jTextFieldClaveAcceso, javax.swing.GroupLayout.PREFERRED_SIZE, 115, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                                        .addComponent(jLabel8)
+                                        .addGap(52, 52, 52)
+                                        .addComponent(jTextFieldClaveAcceso, javax.swing.GroupLayout.PREFERRED_SIZE, 115, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                .addGap(38, 38, 38))
                             .addComponent(jLabel3)))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(21, 21, 21)
@@ -240,13 +225,7 @@ public class AdministradorEstudiantes extends javax.swing.JInternalFrame {
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(42, 42, 42)
-                        .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel6)
-                            .addComponent(jLabelCedulaUsuario))
-                        .addGap(18, 18, 18)
+                        .addGap(186, 186, 186)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel8)
                             .addComponent(jTextFieldClaveAcceso, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
@@ -326,14 +305,10 @@ public class AdministradorEstudiantes extends javax.swing.JInternalFrame {
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
-    private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
-    private javax.swing.JLabel jLabelCedulaUsuario;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JTable jTableEstudiante;
-    private javax.swing.JTextArea jTextAreaMensaje;
     private javax.swing.JTextField jTextFieldApellidos;
     private javax.swing.JTextField jTextFieldClaveAcceso;
     private javax.swing.JTextField jTextFieldCorreo;
