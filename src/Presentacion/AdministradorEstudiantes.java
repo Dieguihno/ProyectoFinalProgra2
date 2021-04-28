@@ -160,8 +160,18 @@ public class AdministradorEstudiantes extends javax.swing.JInternalFrame {
         });
 
         jButtonModificar.setText("Modificar Informacion");
+        jButtonModificar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonModificarActionPerformed(evt);
+            }
+        });
 
         jButtonActualizar.setText("Actualizar");
+        jButtonActualizar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonActualizarActionPerformed(evt);
+            }
+        });
 
         jLabel8.setText("Clave");
 
@@ -266,6 +276,8 @@ public class AdministradorEstudiantes extends javax.swing.JInternalFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    DefaultTableModel modelo =new DefaultTableModel();
+    
     private void jButtonAgregarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonAgregarActionPerformed
         // TODO add your handling code here:
 
@@ -293,6 +305,26 @@ public class AdministradorEstudiantes extends javax.swing.JInternalFrame {
 
     }//GEN-LAST:event_jButtonAgregarActionPerformed
 
+    private void jButtonModificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonModificarActionPerformed
+        // TODO add your handling code here:
+        int fila_seleccionada = jTableEstudiante.getSelectedRow();
+        if (fila_seleccionada>0) {
+            modelo.removeRow(fila_seleccionada);
+            
+        } else {
+            JOptionPane.showMessageDialog(null, "Seleciona la fila a Modificar");
+        }
+            
+       
+
+    }//GEN-LAST:event_jButtonModificarActionPerformed
+
+    private void jButtonActualizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonActualizarActionPerformed
+        // TODO add your handling code here:
+        
+    }//GEN-LAST:event_jButtonActualizarActionPerformed
+      
+    
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButtonActualizar;
