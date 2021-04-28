@@ -207,8 +207,7 @@ public class AdministradorEstudiantes extends javax.swing.JInternalFrame {
                                     .addGroup(layout.createSequentialGroup()
                                         .addComponent(jLabel8)
                                         .addGap(52, 52, 52)
-                                        .addComponent(jTextFieldClaveAcceso, javax.swing.GroupLayout.PREFERRED_SIZE, 115, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                                .addGap(38, 38, 38))
+                                        .addComponent(jTextFieldClaveAcceso, javax.swing.GroupLayout.PREFERRED_SIZE, 115, javax.swing.GroupLayout.PREFERRED_SIZE))))
                             .addComponent(jLabel3)))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(21, 21, 21)
@@ -218,7 +217,7 @@ public class AdministradorEstudiantes extends javax.swing.JInternalFrame {
                         .addComponent(jButtonModificar)
                         .addGap(46, 46, 46)
                         .addComponent(jButtonActualizar)))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(28, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -308,7 +307,7 @@ public class AdministradorEstudiantes extends javax.swing.JInternalFrame {
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable jTableEstudiante;
+    public static javax.swing.JTable jTableEstudiante;
     private javax.swing.JTextField jTextFieldApellidos;
     private javax.swing.JTextField jTextFieldClaveAcceso;
     private javax.swing.JTextField jTextFieldCorreo;

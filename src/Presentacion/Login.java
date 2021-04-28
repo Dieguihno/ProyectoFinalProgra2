@@ -17,13 +17,12 @@ import javax.swing.JOptionPane;
 public class Login extends javax.swing.JFrame {
 
     NegocioEstudiante negocioEstudiante;
-    MatriculaCursos matriculaCursos;
+    
 
     public Login() {
         initComponents();
         negocioEstudiante = new NegocioEstudiante();
-        matriculaCursos = new MatriculaCursos();
-        matriculaCursos.setVisible(false);
+        
 
     }
 
@@ -36,6 +35,12 @@ public class Login extends javax.swing.JFrame {
             return false;
         }
         return true;
+    }
+
+    public String Cedula() {
+        //String cedula = jTextFieldUsuario.getText();
+        return null;
+
     }
 
     /**
@@ -151,12 +156,13 @@ public class Login extends javax.swing.JFrame {
                     char[] charArray = jTextFieldClave.getPassword();
                     String password = new String(charArray);
                     if (negocioEstudiante.login(jTextFieldUsuario.getText(), password)) {
-                        Universidad universidad = new Universidad();
-                        universidad.setVisible(true);
+                                                
+                        ModuloMatricula modulo = new ModuloMatricula();
+                        modulo.setVisible(true);
                         
-                        universidad.administradorEstudiante.setEnabled(false);
-                        universidad.mantenimientoCursos.setEnabled(false);
+                       
 
+                       
                     } else {
                         jLabelMensaje.setVisible(true);
                         jLabelMensaje.setText("Revise sus credenciales");
@@ -164,6 +170,8 @@ public class Login extends javax.swing.JFrame {
 
                 } catch (Exception ex) {
                     Logger.getLogger(Login.class.getName()).log(Level.SEVERE, null, ex);
+                } finally{
+                    dispose();
                 }
             } else {
                 jLabelMensaje.setVisible(true);

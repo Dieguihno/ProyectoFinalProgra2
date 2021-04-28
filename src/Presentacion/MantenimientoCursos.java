@@ -6,6 +6,7 @@
 package Presentacion;
 
 import Entidades.Curso;
+import Entidades.excepcion.Excepcion;
 import Negocio.NegocioCurso;
 import java.util.List;
 import java.util.logging.Level;
@@ -154,6 +155,7 @@ public class MantenimientoCursos extends javax.swing.JInternalFrame {
 
         setClosable(true);
         setDefaultCloseOperation(javax.swing.WindowConstants.HIDE_ON_CLOSE);
+        setForeground(java.awt.Color.white);
         setIconifiable(true);
         setTitle("Administrador de cursos");
 
@@ -184,14 +186,14 @@ public class MantenimientoCursos extends javax.swing.JInternalFrame {
 
         jLabel10.setText("Carrera");
 
-        jCheckBoxSistemas.setText("Ingenieria sistemas");
+        jCheckBoxSistemas.setText("Ingeniería en Sistemas");
         jCheckBoxSistemas.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jCheckBoxSistemasActionPerformed(evt);
             }
         });
 
-        jCheckBoxSoftware.setText("Ingenieria del software");
+        jCheckBoxSoftware.setText("Ingeniería de Software");
 
         jButtonAgregarCurso.setText("Agregar Curso");
         jButtonAgregarCurso.addActionListener(new java.awt.event.ActionListener() {
@@ -205,7 +207,7 @@ public class MantenimientoCursos extends javax.swing.JInternalFrame {
 
             },
             new String [] {
-                "Curso", "laboratorio", "Cupo", "Costo", "Profesor 1", "Profesor 2", "Ingenieria sistemas", "Ingenieria Software"
+                "Curso", "laboratorio", "Cupo", "Costo", "Profesor 1", "Profesor 2", "Ingenieria Sistemas", "Ingenieria Software"
             }
         ) {
             Class[] types = new Class [] {
@@ -284,7 +286,7 @@ public class MantenimientoCursos extends javax.swing.JInternalFrame {
                             .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 709, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(0, 0, Short.MAX_VALUE))))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(415, Short.MAX_VALUE)
+                .addContainerGap(402, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addComponent(jButtonAgregarCurso)
@@ -302,7 +304,7 @@ public class MantenimientoCursos extends javax.swing.JInternalFrame {
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(61, 61, 61)
+                .addContainerGap(65, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel1)
                     .addComponent(jTextFieldNombreCurso, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -344,8 +346,7 @@ public class MantenimientoCursos extends javax.swing.JInternalFrame {
                     .addComponent(jButtonModificarCurso)
                     .addComponent(jButtonEliminar))
                 .addGap(53, 53, 53)
-                .addComponent(filler1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addComponent(filler1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
 
         pack();
@@ -397,34 +398,50 @@ public class MantenimientoCursos extends javax.swing.JInternalFrame {
 
     private void jButtonModificarCursoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonModificarCursoActionPerformed
 
+        if (validarCurso()) {
         try {
             negocioCurso.Actualizar(this.capturaCurso());
-            jTextAreaMensajes.setText("curso actualizado con exito");
+            TableModel tableModel = this.fillTableModel();
+            jTableCursoLista.setModel(tableModel);
+            
 
-        } catch (Exception e) {
-            jTextAreaMensajes.setText("ups ocurrio un error");
+        } catch (Excepcion ex) {
+            jTextAreaMensajes.setText("Ocurrió un problema con la matrícula del curso");
+        }   catch (Exception ex) {
+            jTextAreaMensajes.setText("Ups ocurrió un error general");
         }
+               
+            }else{
 
         jTextAreaMensajes.setVisible(true);
+        }
 
         limpiarCampos();
-
+        
     }//GEN-LAST:event_jButtonModificarCursoActionPerformed
 
     private void jButtonEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonEliminarActionPerformed
 
+        if (validarCurso()) {
         try {
             negocioCurso.eliminar(this.capturaCurso());
-            jTextAreaMensajes.setText("curso eliminado con exito");
+            TableModel tableModel = this.fillTableModel();
+            jTableCursoLista.setModel(tableModel);
+            
 
-        } catch (Exception e) {
-            jTextAreaMensajes.setText("ups ocurrio un error");
+        } catch (Excepcion ex) {
+            jTextAreaMensajes.setText("Ocurrió un problema con la matrícula del curso");
+        }   catch (Exception ex) {
+            jTextAreaMensajes.setText("Ups ocurrió un error general");
         }
+               
+            }else{
 
         jTextAreaMensajes.setVisible(true);
+        }
 
         limpiarCampos();
-
+        
     }//GEN-LAST:event_jButtonEliminarActionPerformed
 
     private void jTableCursoListaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTableCursoListaMouseClicked

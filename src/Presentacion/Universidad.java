@@ -15,7 +15,7 @@ public class Universidad extends javax.swing.JFrame {
 
     MantenimientoCursos mantenimientoCursos;
     AdministradorEstudiantes administradorEstudiante;
-    MatriculaCursos matriculaCursos;
+    ModuloMatricula matriculaCursos;
 
     /**
      * Creates new form Matricula
@@ -30,9 +30,9 @@ public class Universidad extends javax.swing.JFrame {
         administradorEstudiante.setVisible(false);
         desktopPane.add(administradorEstudiante);
         
-        matriculaCursos = new MatriculaCursos();
+        matriculaCursos = new ModuloMatricula();
         matriculaCursos.setVisible(false);
-        desktopPane.add(matriculaCursos);
+        
     }
 
     /**
@@ -70,6 +70,7 @@ public class Universidad extends javax.swing.JFrame {
         jMenu3.setText("jMenu3");
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setTitle("Menu principal");
 
         fileMenu.setMnemonic('f');
         fileMenu.setText("Archivo");
