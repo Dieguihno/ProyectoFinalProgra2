@@ -17,12 +17,10 @@ import javax.swing.JOptionPane;
 public class Login extends javax.swing.JFrame {
 
     NegocioEstudiante negocioEstudiante;
-    
 
     public Login() {
         initComponents();
         negocioEstudiante = new NegocioEstudiante();
-        
 
     }
 
@@ -38,8 +36,9 @@ public class Login extends javax.swing.JFrame {
     }
 
     public String Cedula() {
-        //String cedula = jTextFieldUsuario.getText();
-        return null;
+        String cedula;
+        cedula = jTextFieldUsuario.getText();       
+        return cedula;
 
     }
 
@@ -156,13 +155,11 @@ public class Login extends javax.swing.JFrame {
                     char[] charArray = jTextFieldClave.getPassword();
                     String password = new String(charArray);
                     if (negocioEstudiante.login(jTextFieldUsuario.getText(), password)) {
-                                                
+                        Cedula();
+
                         ModuloMatricula modulo = new ModuloMatricula();
                         modulo.setVisible(true);
-                        
-                       
 
-                       
                     } else {
                         jLabelMensaje.setVisible(true);
                         jLabelMensaje.setText("Revise sus credenciales");
@@ -170,7 +167,7 @@ public class Login extends javax.swing.JFrame {
 
                 } catch (Exception ex) {
                     Logger.getLogger(Login.class.getName()).log(Level.SEVERE, null, ex);
-                } finally{
+                } finally {
                     dispose();
                 }
             } else {
